@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>#4471: two date causes - support kb</title>
+    <style>
+      :root { color-scheme: light dark; --bg: #fbfaf7; --fg: #1d1d1b; --muted: #6b6a66; --line: #e3e0d8; --accent: #2f6f5e; --warn: #b4501f; --warn-bg: #fbeee6; --note-bg: #eef5f2; }
+      @media (prefers-color-scheme: dark) { :root { --bg: #171716; --fg: #ecebe6; --muted: #9c9a93; --line: #34332f; --accent: #6fbfa6; --warn: #f0905d; --warn-bg: #3a2418; --note-bg: #1d2c27; } }
+      body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, sans-serif; }
+      .kb { max-width: 760px; margin: 0 auto; padding: 2rem 16px 4rem; }
+      .crumb { color: var(--muted); font: 0.8rem ui-monospace, monospace; text-decoration: none; }
+      h1 { margin: 0.25rem 0 0.5rem; line-height: 1.2; }
+      .meta { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; color: var(--muted); font-size: 0.85rem; margin: 0; }
+      .status { border: 1px solid var(--line); border-radius: 99px; padding: 0 0.6rem; }
+      a { color: var(--accent); }
+      code { font-family: ui-monospace, monospace; font-size: 0.88em; }
+      .callout { border-left: 4px solid var(--accent); padding: 0.5rem 1rem; margin: 1rem 0; background: var(--note-bg); }
+      .table-wrap { overflow-x: auto; }
+      table { border-collapse: collapse; width: 100%; min-width: 680px; margin: 1rem 0; font-size: 0.92rem; }
+      th, td { border-bottom: 1px solid var(--line); padding: 0.35rem 0.5rem; text-align: left; }
+      .tags, figcaption, .note { color: var(--muted); font-size: 0.85em; }
+      svg { width: 100%; max-width: 640px; }
+      .in { fill: var(--warn); }
+      .merged { fill: var(--accent); }
+      svg text { font: 8px ui-monospace, monospace; fill: var(--muted); text-anchor: middle; }
+      .key { display: inline-block; width: 0.7em; height: 0.7em; border-radius: 2px; }
+      .key.in { background: var(--warn); }
+      .key.merged { background: var(--accent); }
+      footer { margin-top: 3rem; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--line); padding-top: 1rem; }
+      .stamp { margin: 2rem 0 0; color: var(--muted); font: 0.85rem ui-monospace, monospace; }
+      .stamp b { color: var(--accent); }
+    </style>
+  </head>
+  <body>
+    <div class="kb">
+      <header>
+        <a class="crumb" href="https://github.com/Carliskaner/what-it-shows-s01e03">support desk &middot; kb</a>
+        <h1>#4471 &middot; two date causes</h1>
+        <p class="meta"><span>owner <b>support desk</b></span><span class="status">known</span><span>reviewed 2026-11-03</span></p>
+      </header>
+      <main>
+        <p>The 4 October export contains overlapping pages: 427 rows include 15 repeated report IDs, leaving 412 distinct reports. The intake tag is a guess; the cause depends on the tenant's date order, booking form, and how the report came in.</p>
+        <p>The reports merged into #4471 describe two separate problems, not one shared parser failure.</p>
+        <aside class="callout">Keep the parser and form-hint reports in separate tickets. The live queue may have changed since this export.</aside>
+        <h2>What was merged</h2>
+        <p class="sum"><strong>412</strong> reports merged into #4471 &middot; <strong>2</strong> causes</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>cause</th><th>reports</th><th>tagged as</th><th>tenants</th><th>seen</th><th>ticket</th></tr></thead>
+            <tbody>
+              <tr><td><code>parser</code></td><td>379</td><td class="tags">parser &times;356 &middot; hint &times;23</td><td>11</td><td>2026-04-01 &rarr; 2026-10-04</td><td><a href="https://github.com/Carliskaner/what-it-shows-s01e03/issues/1">#1</a></td></tr>
+              <tr><td><code>hint</code></td><td>33</td><td class="tags">hint &times;18 &middot; parser &times;15</td><td>3</td><td>2026-04-17 &rarr; 2026-09-22</td><td><a href="https://github.com/Carliskaner/what-it-shows-s01e03/issues/2">#2</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">5 reports read as a one-day move; filed under <code>parser</code> by tenant.</p>
+        <h2>Separate problems</h2>
+        <ul>
+          <li><a href="https://github.com/Carliskaner/what-it-shows-s01e03/issues/1">Shared date parser flips day-first tenant dates (379 reports)</a></li>
+          <li><a href="https://github.com/Carliskaner/what-it-shows-s01e03/issues/2">booking-v3 date hint conflicts with day-first tenants (33 reports)</a></li>
+        </ul>
+        <h2>Since April</h2>
+        <figure>
+          <svg viewBox="0 0 672 140" role="img" aria-label="Reports received and merged into #4471 per week">
+            <rect class="in" x="2" y="106.39" width="9" height="3.61" />
+            <text x="12" y="128">03-30</text>
+            <rect class="in" x="26" y="104.33" width="9" height="5.67" />
+            <rect class="in" x="50" y="102.78" width="9" height="7.22" />
+            <rect class="in" x="74" y="99.69" width="9" height="10.31" />
+            <rect class="in" x="98" y="101.75" width="9" height="8.25" />
+            <text x="108" y="128">04-27</text>
+            <rect class="in" x="122" y="103.81" width="9" height="6.19" />
+            <rect class="in" x="146" y="105.88" width="9" height="4.12" />
+            <rect class="in" x="170" y="103.3" width="9" height="6.7" />
+            <rect class="in" x="194" y="102.27" width="9" height="7.73" />
+            <text x="204" y="128">05-25</text>
+            <rect class="in" x="218" y="101.24" width="9" height="8.76" />
+            <rect class="in" x="242" y="101.75" width="9" height="8.25" />
+            <rect class="in" x="266" y="100.21" width="9" height="9.79" />
+            <rect class="in" x="290" y="104.33" width="9" height="5.67" />
+            <text x="300" y="128">06-22</text>
+            <rect class="in" x="314" y="102.27" width="9" height="7.73" />
+            <rect class="merged" x="324" y="10" width="9" height="100" />
+            <rect class="in" x="338" y="99.18" width="9" height="10.82" />
+            <rect class="merged" x="348" y="99.69" width="9" height="10.31" />
+            <rect class="in" x="362" y="101.24" width="9" height="8.76" />
+            <rect class="merged" x="372" y="100.72" width="9" height="9.28" />
+            <rect class="in" x="386" y="102.27" width="9" height="7.73" />
+            <rect class="merged" x="396" y="102.27" width="9" height="7.73" />
+            <text x="396" y="128">07-20</text>
+            <rect class="in" x="410" y="99.18" width="9" height="10.82" />
+            <rect class="merged" x="420" y="99.18" width="9" height="10.82" />
+            <rect class="in" x="434" y="105.88" width="9" height="4.12" />
+            <rect class="merged" x="444" y="105.88" width="9" height="4.12" />
+            <rect class="in" x="458" y="102.27" width="9" height="7.73" />
+            <rect class="merged" x="468" y="102.27" width="9" height="7.73" />
+            <rect class="in" x="482" y="98.66" width="9" height="11.34" />
+            <rect class="merged" x="492" y="98.66" width="9" height="11.34" />
+            <text x="492" y="128">08-17</text>
+            <rect class="in" x="506" y="102.78" width="9" height="7.22" />
+            <rect class="merged" x="516" y="102.78" width="9" height="7.22" />
+            <rect class="in" x="530" y="99.18" width="9" height="10.82" />
+            <rect class="merged" x="540" y="99.18" width="9" height="10.82" />
+            <rect class="in" x="554" y="98.66" width="9" height="11.34" />
+            <rect class="merged" x="564" y="98.66" width="9" height="11.34" />
+            <rect class="in" x="578" y="102.27" width="9" height="7.73" />
+            <rect class="merged" x="588" y="102.27" width="9" height="7.73" />
+            <text x="588" y="128">09-14</text>
+            <rect class="in" x="602" y="97.11" width="9" height="12.89" />
+            <rect class="merged" x="612" y="98.14" width="9" height="11.86" />
+            <rect class="in" x="626" y="101.24" width="9" height="8.76" />
+            <rect class="merged" x="636" y="100.21" width="9" height="9.79" />
+          </svg>
+          <figcaption><span class="key in"></span> received &middot; <span class="key merged"></span> merged into #4471 &middot; per week</figcaption>
+        </figure>
+        <h2>Lessons</h2>
+        <ul>
+          <li>Count distinct report IDs; overlapping export pages repeat reports.</li>
+          <li>Classify from tenant locale, booking form, and channel, not the intake guess.</li>
+          <li>Check the live queue before relying on this dated export.</li>
+        </ul>
+        <p class="stamp">desk ref <b>DR-VD1E-EQ2G</b></p>
+      </main>
+      <footer>Pages are written by people. Tables and charts are built from data at render time.</footer>
+    </div>
+  </body>
+</html>
